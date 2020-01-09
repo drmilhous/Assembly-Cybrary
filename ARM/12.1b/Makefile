@@ -1,0 +1,14 @@
+all: 12.1b 
+ 
+12.1b: 12.1b.o lib.o
+	gcc -mfpu=neon-vfpv4 -o $@ $+
+ 
+12.1b.o : 12.1b.asm 
+	as -mfpu=neon-vfpv4 -o $@ $<
+
+lib.o: lib.asm
+	as -o lib.o lib.asm
+ 
+clean:
+	rm -vf 12.1b *.o
+
