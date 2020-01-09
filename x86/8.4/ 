@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	float x;
+	scanf("%f", &x);
+	x = (x /3.0 * 2.0)
+	float y = 2.0/3.0;
+	if (x ==y)
+	{
+		printf("The value is %lf", x);
+	}
+}

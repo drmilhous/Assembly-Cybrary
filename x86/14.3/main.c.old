@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <time.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <grp.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/stat.h>
+int main(int argc, char ** argv, char ** envp)
+{
+	
+	printf("Size of mode_t %d\n", (int) sizeof(mode_t)); 
+	printf("Size of ino_t %d\n", (int) sizeof(ino_t)); 
+	printf("Size of dev_t %d\n", (int) sizeof(dev_t)); 
+	printf("Size of uid_t %d\n", (int) sizeof(uid_t)); 
+	printf("Size of gid_t %d\n", (int) sizeof(gid_t)); 
+	printf("Size of off_t %d\n", (int) sizeof(off_t)); 
+	printf("Size of timespec %d\n", (int) sizeof(struct timespec)); 
+	printf("Size of blksize_t %d\n", (int) sizeof(blksize_t)); 
+	printf("Size of blkcnt_t %d\n", (int) sizeof(blkcnt_t)); 
+	printf("Size of nlink_t %d\n", (int) sizeof(nlink_t)); 
+
+	struct stat s;
+	char name[30] = "/bin/ls";
+	stat(name, &s);
+	printf("%s:\n", name);
+	s.st_mode = 255;
+	s.st_blocks = -1;
+	/*
+	printf("  inode: %u\n", (unsigned int) s.st_ino);
+	printf("  perms: %o\n", s.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+	printf("  links: %d\n", (int) s.st_nlink);
+	printf("  size: %ld\n", s.st_size); // you may use %lld 
+	printf("  atime: %s", ctime(&s.st_atim.tv_sec));
+	printf("  mtime: %s", ctime(&s.st_mtim.tv_sec));
+	printf("  ctime: %s\n", ctime(&s.st_ctim.tv_sec));
+	printf("  blocks: %d\n", (int) s.st_blocks);
+*/	// https://en.wikipedia.org/wiki/Stat_(system_call)
+}
